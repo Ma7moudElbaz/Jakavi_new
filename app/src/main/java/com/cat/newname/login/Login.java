@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.cat.newname.R;
+import com.cat.newname.jakavi.Flm_list;
 import com.cat.newname.network_interface.ServiceInterface;
 import com.cat.newname.jakavi.JakaviHome;
 import com.cat.newname.revolade.RevoladeHome;
@@ -112,13 +113,36 @@ public class Login extends AppCompatActivity {
                         } else if (state.equals("1")) {
                             JSONObject userData = res.getJSONObject("data");
                             SharedPreferences.Editor myEdit = shared.edit();
-                            myEdit.putInt("id", userData.getInt("id"));
-                            myEdit.putString("name", userData.getString("username"));
-                            myEdit.putString("email", userData.getString("email"));
-                            myEdit.putString("type", userData.getString("type"));
-                            myEdit.putInt("scored", userData.getInt("score"));
-                            myEdit.putInt("target", userData.getInt("target"));
-                            myEdit.putString("percentage", userData.getString("percentage"));
+                            String userPermission = userData.getString("permission");
+                            if (userPermission.equals("normal")){
+
+                                myEdit.putInt("id", userData.getInt("id"));
+                                myEdit.putString("name", userData.getString("username"));
+                                myEdit.putString("email", userData.getString("email"));
+                                myEdit.putString("type", userData.getString("type"));
+                                myEdit.putInt("scored", userData.getInt("score"));
+                                myEdit.putInt("target", userData.getInt("target"));
+                                myEdit.putString("percentage", userData.getString("percentage"));
+
+
+                                if (userData.getString("type").equals("jakavi")) {
+                                    Intent i = new Intent(getApplicationContext(), JakaviHome.class);
+                                    startActivity(i);
+                                } else {
+                                    Intent i = new Intent(getApplicationContext(), RevoladeHome.class);
+                                    startActivity(i);
+                                }
+
+                            }
+
+                            else if (userPermission.equals("top level")){
+                                Intent i = new Intent(getApplicationContext(), Flm_list.class);
+                                startActivity(i);
+                            }
+                            else if (userPermission.equals("flm")){
+
+                            }
+
                             myEdit.putString("loginName", emailtxt);
                             if (checkRemeber.isChecked()) {
                                 myEdit.putString("password", passwordtxt);
@@ -126,13 +150,8 @@ public class Login extends AppCompatActivity {
                                 myEdit.putString("password", "");
                             }
                             myEdit.commit();
-                            if (userData.getString("type").equals("jakavi")) {
-                                Intent i = new Intent(getApplicationContext(), JakaviHome.class);
-                                startActivity(i);
-                            } else {
-                                Intent i = new Intent(getApplicationContext(), RevoladeHome.class);
-                                startActivity(i);
-                            }
+
+
                             finish();
                         }
                         dialog.dismiss();

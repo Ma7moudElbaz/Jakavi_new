@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:id="@+id/parent_layout">
+
+    <LinearLayout
+        android:id="@+id/rowFG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/listitem_bg"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:padding="10dp">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/patient_text1"/>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="email"
+                android:textSize="18sp"
+                android:textColor="@color/patient_text2"/>
+
+            <TextView
+                android:id="@+id/repsNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No of reps"
+                android:textSize="18sp"
+                android:textColor="@color/patient_text2"/>
+
+        </LinearLayout>
+
+</RelativeLayout>
