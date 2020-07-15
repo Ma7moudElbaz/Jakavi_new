@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.cat.newname.R;
 import com.cat.newname.jakavi.Flm_list;
+import com.cat.newname.jakavi.Rep_list;
 import com.cat.newname.network_interface.ServiceInterface;
 import com.cat.newname.jakavi.JakaviHome;
 import com.cat.newname.revolade.RevoladeHome;
@@ -67,16 +68,16 @@ public class Login extends AppCompatActivity {
 
         shared = getSharedPreferences("id", Context.MODE_PRIVATE);
 
-        if (shared.contains("id")) {
-            idcheck = shared.getInt("id", 0);
-        } else {
-            idcheck = 0;
-        }
+//        if (shared.contains("id")) {
+//            idcheck = shared.getInt("id", 0);
+//        } else {
+//            idcheck = 0;
+//        }
 
-        if (idcheck != 0) {
+//        if (idcheck != 0) {
             email.setText(shared.getString("loginName", "0"));
             password.setText(shared.getString("password", "0"));
-        }
+//        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,9 +115,10 @@ public class Login extends AppCompatActivity {
                             JSONObject userData = res.getJSONObject("data");
                             SharedPreferences.Editor myEdit = shared.edit();
                             String userPermission = userData.getString("permission");
+                            myEdit.putString("permission", userPermission);
                             if (userPermission.equals("normal")){
 
-                                myEdit.putInt("id", userData.getInt("id"));
+                                myEdit.putInt("repId", userData.getInt("id"));
                                 myEdit.putString("name", userData.getString("username"));
                                 myEdit.putString("email", userData.getString("email"));
                                 myEdit.putString("type", userData.getString("type"));
@@ -140,7 +142,9 @@ public class Login extends AppCompatActivity {
                                 startActivity(i);
                             }
                             else if (userPermission.equals("flm")){
-
+                                Intent i = new Intent(getApplicationContext(), Rep_list.class);
+                                myEdit.putInt("flmId", userData.getInt("id"));
+                                startActivity(i);
                             }
 
                             myEdit.putString("loginName", emailtxt);
@@ -149,11 +153,11 @@ public class Login extends AppCompatActivity {
                             } else {
                                 myEdit.putString("password", "");
                             }
+
+
                             myEdit.commit();
-
-
-                            finish();
                         }
+
                         dialog.dismiss();
 
                     } catch (Exception e) {

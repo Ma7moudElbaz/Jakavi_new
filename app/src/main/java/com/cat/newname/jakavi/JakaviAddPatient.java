@@ -68,7 +68,7 @@ public class JakaviAddPatient extends AppCompatActivity {
         setContentView(R.layout.activity_jakavi_add_patient);
 
         shared = getSharedPreferences("id", Context.MODE_PRIVATE);
-        userId = shared.getInt("id", 0);
+        userId = shared.getInt("repId", 0);
 
 
         dialog = new ProgressDialog(this);

@@ -1,6 +1,8 @@
 package com.cat.newname.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cat.newname.R;
+import com.cat.newname.jakavi.Rep_list;
 import com.cat.newname.model_items.FLM_item;
 import com.cat.newname.model_items.Patient_item;
 
@@ -50,7 +53,13 @@ public class FLM_adapter extends RecyclerView.Adapter<FLM_adapter.ViewHolder> {
         holder.parent_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(mContext, Rep_list.class);
 
+                SharedPreferences shared = mContext.getSharedPreferences("id", Context.MODE_PRIVATE);;
+                SharedPreferences.Editor myEdit = shared.edit();
+                myEdit.putInt("flmId", items.get(position).getId());
+                myEdit.commit();
+                mContext.startActivity(i);
             }
         });
 

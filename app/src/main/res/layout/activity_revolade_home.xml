@@ -67,7 +67,21 @@
             android:layout_marginRight="20dp"
             android:text="LogOut"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/colorPrimary"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+
+            />
 
     </RelativeLayout>
 

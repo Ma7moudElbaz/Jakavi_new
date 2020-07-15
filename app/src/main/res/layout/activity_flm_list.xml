@@ -81,7 +81,20 @@
             android:text="LogOut"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_back"
+            android:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            />
 
     </RelativeLayout>
 

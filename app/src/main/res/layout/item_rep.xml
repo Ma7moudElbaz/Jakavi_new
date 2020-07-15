@@ -36,12 +36,20 @@
                 android:textColor="@color/patient_text2"/>
 
             <TextView
-                android:id="@+id/repsNo"
+                android:id="@+id/product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No of reps"
+                android:text="Product"
                 android:textSize="18sp"
                 android:textColor="@color/patient_text2"/>
+
+        <TextView
+            android:id="@+id/target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="56/100"
+            android:textSize="18sp"
+            android:textColor="@color/patient_text2"/>
 
         </LinearLayout>
 

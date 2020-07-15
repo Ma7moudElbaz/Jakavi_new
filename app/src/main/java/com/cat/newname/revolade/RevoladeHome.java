@@ -28,6 +28,8 @@ public class RevoladeHome extends AppCompatActivity {
 
     TextView scaoredtv, unscoredtv, targettv, logout;
     ImageView addBtn;
+    ImageView back;
+    String permission;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
     @Override
@@ -35,15 +37,19 @@ public class RevoladeHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revolade_home);
 
+        back = findViewById(R.id.back);
         scaoredtv = findViewById(R.id.scoredtxt);
         unscoredtv = findViewById(R.id.unscoredtxt);
         targettv = findViewById(R.id.targettxt);
         logout = findViewById(R.id.logout);
         addBtn = findViewById(R.id.addBtn);
 
-        shared = getSharedPreferences("id", Context.MODE_PRIVATE);
+        shared = getSharedPreferences("repId", Context.MODE_PRIVATE);
         target = shared.getInt("target", 0);
-        scored = shared.getInt("scored", 0);
+        scored = shared.getInt("scored", 0);permission = shared.getString("permission","");
+        if (!permission.equals("normal")){
+            addBtn.setVisibility(View.GONE);
+        }
         unscored = target - scored;
         scoredPercentage = Double.valueOf(shared.getString("percentage", ""));
         unscoredPercentage = 100 - scoredPercentage;
@@ -65,6 +71,13 @@ public class RevoladeHome extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), Login.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 

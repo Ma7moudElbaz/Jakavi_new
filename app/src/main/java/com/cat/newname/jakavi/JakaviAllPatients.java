@@ -95,7 +95,7 @@ public class JakaviAllPatients extends AppCompatActivity implements RecyclerTouc
             }
         });
         shared = getSharedPreferences("id", Context.MODE_PRIVATE);
-        userId = shared.getInt("id", 0);
+        userId = shared.getInt("repId", 0);
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please, Wait");
         dialog.setCancelable(false);

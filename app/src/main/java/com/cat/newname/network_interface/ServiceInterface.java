@@ -67,4 +67,7 @@ public interface ServiceInterface {
     @GET("flm_users")
     Call<ResponseBody> getFlm();
 
+    @GET("flm/{flmId}/reps")
+    Call<ResponseBody> getReps(@Path("flmId") int flmId);
+
 }

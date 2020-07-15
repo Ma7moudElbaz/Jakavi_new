@@ -29,12 +29,17 @@ public class JakaviHome extends AppCompatActivity {
 
     TextView scaoredtv, unscoredtv, targettv, logout;
     ImageView addBtn;
+    ImageView back;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
+
+    String userPermission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jakavi_home);
+
+        back = findViewById(R.id.back);
         scaoredtv = findViewById(R.id.scoredtxt);
         unscoredtv = findViewById(R.id.unscoredtxt);
         targettv = findViewById(R.id.targettxt);
@@ -43,6 +48,10 @@ public class JakaviHome extends AppCompatActivity {
         shared = getSharedPreferences("id", Context.MODE_PRIVATE);
         target = shared.getInt("target", 0);
         scored = shared.getInt("scored", 0);
+        userPermission = shared.getString("permission","");
+        if (!userPermission.equals("normal")){
+            addBtn.setVisibility(View.GONE);
+        }
         unscored = target - scored;
         scoredPercentage = Double.valueOf(shared.getString("percentage", ""));
         unscoredPercentage = 100 - scoredPercentage;
@@ -64,6 +73,13 @@ public class JakaviHome extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), Login.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 
