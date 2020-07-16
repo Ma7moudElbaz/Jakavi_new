@@ -49,7 +49,8 @@ public class FLM_adapter extends RecyclerView.Adapter<FLM_adapter.ViewHolder> {
 
         holder.name.setText(items.get(position).getName());
         holder.email.setText(items.get(position).getEmail());
-        holder.repNo.setText(items.get(position).getRepNo());
+        holder.email.setText(items.get(position).getScored()+" / "+items.get(position).getTarget());
+        holder.repNo.setText(items.get(position).getRepNo() + " Reps");
         holder.parent_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +73,7 @@ public class FLM_adapter extends RecyclerView.Adapter<FLM_adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, email, repNo;
+        TextView name, email,score, repNo;
         RelativeLayout parent_layout;
 
 
@@ -80,6 +81,7 @@ public class FLM_adapter extends RecyclerView.Adapter<FLM_adapter.ViewHolder> {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             email = itemView.findViewById(R.id.email);
+            score = itemView.findViewById(R.id.score);
             repNo = itemView.findViewById(R.id.repsNo);
             parent_layout = itemView.findViewById(R.id.parent_layout);
         }

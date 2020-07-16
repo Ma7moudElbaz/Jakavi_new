@@ -1,14 +1,21 @@
 package com.cat.newname.model_items;
 
 public class FLM_item {
-    int id;
-    String name, email, repNo;
 
-    public FLM_item(int id, String name, String email, String repNo) {
+
+    int id;
+    String name, email;
+    int scored, target ,repNo;
+    String percentage;
+
+    public FLM_item(int id, String name, String email, int scored, int target, int repNo, String percentage) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.scored = scored;
+        this.target = target;
         this.repNo = repNo;
+        this.percentage = percentage;
     }
 
     public int getId() {
@@ -35,11 +42,35 @@ public class FLM_item {
         this.email = email;
     }
 
-    public String getRepNo() {
+    public int getScored() {
+        return scored;
+    }
+
+    public void setScored(int scored) {
+        this.scored = scored;
+    }
+
+    public int getTarget() {
+        return target;
+    }
+
+    public void setTarget(int target) {
+        this.target = target;
+    }
+
+    public int getRepNo() {
         return repNo;
     }
 
-    public void setRepNo(String repNo) {
+    public void setRepNo(int repNo) {
         this.repNo = repNo;
+    }
+
+    public String getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(String percentage) {
+        this.percentage = percentage;
     }
 }

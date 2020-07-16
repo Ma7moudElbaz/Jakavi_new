@@ -86,7 +86,7 @@
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="35dp"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
@@ -94,6 +94,7 @@
             android:tint="@color/white"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"
+            android:padding="5dp"
             />
 
     </RelativeLayout>

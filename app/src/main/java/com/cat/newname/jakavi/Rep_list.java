@@ -51,6 +51,9 @@ public class Rep_list extends AppCompatActivity {
     SharedPreferences shared;
     int flmId ;
 
+    TextView totalTargettxt;
+    int totalscore = 0, totaltarget = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,7 @@ public class Rep_list extends AppCompatActivity {
 
         logout = findViewById(R.id.logout);
         back = findViewById(R.id.back);
+        totalTargettxt = findViewById(R.id.totalTarget);
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please, Wait");
@@ -135,12 +139,16 @@ public class Rep_list extends AppCompatActivity {
             final String name = currentobject.getString("name");
             final String email = currentobject.getString("email");
             final String type = currentobject.getString("type");
-            final int score = currentobject.getInt("score");
+            final int scored = currentobject.getInt("score");
             final int target = currentobject.getInt("target");
             final String percentage = currentobject.getString("target");
 
-            reps.add(new Rep_item(id, name, email, type,score,target,percentage));
+            totalscore = totalscore+scored;
+            totaltarget = totaltarget+target;
+
+            reps.add(new Rep_item(id, name, email, type,scored,target,percentage));
         }
         adapter.notifyDataSetChanged();
+        totalTargettxt.setText("Target "+totalscore+" / "+totaltarget);
     }
 }

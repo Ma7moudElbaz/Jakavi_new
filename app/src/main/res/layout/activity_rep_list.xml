@@ -86,7 +86,7 @@
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="35dp"
+            android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
@@ -94,6 +94,20 @@
             android:tint="@color/white"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"
+            android:padding="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/deleted"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_users"
+            android:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
             />
 
     </RelativeLayout>
@@ -122,6 +136,7 @@
                 android:adjustViewBounds="true"/>
 
             <TextView
+                android:id="@+id/totalTarget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Target 0/0"
