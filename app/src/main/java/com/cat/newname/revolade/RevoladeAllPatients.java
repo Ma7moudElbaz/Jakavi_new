@@ -194,8 +194,8 @@ public class RevoladeAllPatients extends AppCompatActivity implements RecyclerTo
 
                         } else if (viewID == R.id.delete) {
                             deletePatient(patients.get(position).getId());
-                            patients.remove(position);
-                            adapter.notifyDataSetChanged();
+//                            patients.remove(position);
+//                            adapter.notifyDataSetChanged();
                         }
                     }
                 });
@@ -242,7 +242,7 @@ public class RevoladeAllPatients extends AppCompatActivity implements RecyclerTo
         map.put("user_id", String.valueOf(userId));
 
 
-        myInterface.deletePatient(patientId, map).enqueue(new Callback<ResponseBody>() {
+        myInterface.deletePatientRequest(patientId, map).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 

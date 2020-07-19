@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cat.newname.login.Login;
 import com.cat.newname.R;
@@ -29,7 +30,7 @@ public class RevoladeHome extends AppCompatActivity {
     TextView scaoredtv, unscoredtv, targettv, logout;
     ImageView addBtn;
     ImageView back;
-    String permission;
+    String userPermission;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
     @Override
@@ -44,10 +45,11 @@ public class RevoladeHome extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         addBtn = findViewById(R.id.addBtn);
 
-        shared = getSharedPreferences("repId", Context.MODE_PRIVATE);
+        shared = getSharedPreferences("id", Context.MODE_PRIVATE);
         target = shared.getInt("target", 0);
-        scored = shared.getInt("scored", 0);permission = shared.getString("permission","");
-        if (!permission.equals("normal")){
+        scored = shared.getInt("scored", 0);
+        userPermission = shared.getString("permission","");
+        if (!userPermission.equals("normal")){
             addBtn.setVisibility(View.GONE);
         }
         unscored = target - scored;

@@ -178,8 +178,8 @@ public class JakaviAllPatients extends AppCompatActivity implements RecyclerTouc
 
                         } else if (viewID == R.id.delete) {
                             deletePatient(patients.get(position).getId());
-                            patients.remove(position);
-                            adapter.notifyDataSetChanged();
+//                            patients.remove(position);
+//                            adapter.notifyDataSetChanged();
                         }
                     }
                 });
@@ -222,7 +222,7 @@ public class JakaviAllPatients extends AppCompatActivity implements RecyclerTouc
         Map<String, String> map = new HashMap<>();
         map.put("user_id", String.valueOf(userId));
 
-        myInterface.deletePatient(patientId, map).enqueue(new Callback<ResponseBody>() {
+        myInterface.deletePatientRequest(patientId, map).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {

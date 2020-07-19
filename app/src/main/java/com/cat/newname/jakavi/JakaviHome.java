@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cat.newname.login.Login;
 import com.cat.newname.R;
@@ -18,7 +19,6 @@ import com.razerdp.widget.animatedpieview.AnimatedPieViewConfig;
 import com.razerdp.widget.animatedpieview.data.SimplePieInfo;
 
 import java.text.DecimalFormat;
-
 
 public class JakaviHome extends AppCompatActivity {
 
@@ -30,9 +30,8 @@ public class JakaviHome extends AppCompatActivity {
     TextView scaoredtv, unscoredtv, targettv, logout;
     ImageView addBtn;
     ImageView back;
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
-
     String userPermission;
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +115,4 @@ public class JakaviHome extends AppCompatActivity {
         mAnimatedPieView.start();
 
     }
-
-
 }

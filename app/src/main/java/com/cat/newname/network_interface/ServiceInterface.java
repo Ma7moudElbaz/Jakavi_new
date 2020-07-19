@@ -49,6 +49,14 @@ public interface ServiceInterface {
     Call<ResponseBody> deletePatient(@Path("patientId") int doctorId, @FieldMap Map<String, String> map);
 
 
+    @POST("patient/{patientId}/delete-request")
+    @FormUrlEncoded
+    Call<ResponseBody> deletePatientRequest(@Path("patientId") int patientId, @FieldMap Map<String, String> map);
+
+    @POST("patient/{patientId}/delete-request")
+    @FormUrlEncoded
+    Call<ResponseBody> confirmDeletePatient(@Path("patientId") int patientId, @FieldMap Map<String, String> map);
+
     @GET("product/{productId}/doses")
     Call<ResponseBody> getDoses(@Path("productId") String productId);
 
@@ -69,5 +77,9 @@ public interface ServiceInterface {
 
     @GET("flm/{flmId}/reps")
     Call<ResponseBody> getReps(@Path("flmId") int flmId);
+
+
+    @GET("flm/{flmId}/delete-list")
+    Call<ResponseBody> getDeletedRequests(@Path("flmId") int flmId);
 
 }

@@ -22,7 +22,8 @@
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl"
         tools:targetApi="n">
-        <activity android:name=".jakavi.Rep_list"></activity>
+        <activity android:name=".jakavi.DeletedRequests"></activity>
+        <activity android:name=".jakavi.Rep_list" />
         <activity android:name=".jakavi.Flm_list" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

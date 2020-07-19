@@ -45,8 +45,8 @@ public class Rep_list extends AppCompatActivity {
     ArrayList<Rep_item> reps = new ArrayList<>();
     Rep_adapter adapter;
     RecyclerView recyclerView;
-    TextView logout;
-    ImageView back;
+    TextView logout  ;
+    ImageView back,deletrequesets;
 
     SharedPreferences shared;
     int flmId ;
@@ -54,6 +54,7 @@ public class Rep_list extends AppCompatActivity {
     TextView totalTargettxt;
     int totalscore = 0, totaltarget = 0;
 
+    String userPermission;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,12 @@ public class Rep_list extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         back = findViewById(R.id.back);
         totalTargettxt = findViewById(R.id.totalTarget);
+        deletrequesets = findViewById(R.id.deleted);
+
+        userPermission = shared.getString("permission", "");
+        if (!userPermission.equals("flm")){
+            deletrequesets.setVisibility(View.GONE);
+        }
 
         dialog = new ProgressDialog(this);
         dialog.setMessage("Please, Wait");
@@ -88,6 +95,13 @@ public class Rep_list extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+        deletrequesets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), DeletedRequests.class);
+                startActivity(i);
             }
         });
 
@@ -141,7 +155,7 @@ public class Rep_list extends AppCompatActivity {
             final String type = currentobject.getString("type");
             final int scored = currentobject.getInt("score");
             final int target = currentobject.getInt("target");
-            final String percentage = currentobject.getString("target");
+            final String percentage = currentobject.getString("percentage");
 
             totalscore = totalscore+scored;
             totaltarget = totaltarget+target;
